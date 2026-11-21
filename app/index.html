@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#121016">
+<link rel="icon" href="data:,">
+<title>Neon Coast Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <header class="masthead">
+    <span class="mark" aria-hidden="true">✦</span>
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+  </header>
+  <section class="workspace" aria-label="Cover preview">
+    <div class="preview-bar"><b>Live preview</b><output id="dimensions"></output></div>
+    <div class="stage"><canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas></div>
+    <p class="hint">Click a panel to add a photo · Drag to position · Scroll to zoom</p>
+  </section>
+  <aside class="controls" aria-label="Cover controls">
+    <fieldset>
+      <legend>Layout</legend>
+      <div class="choices layouts" id="layouts">
+        <button type="button" data-layout="hero"><i aria-hidden="true"></i>Hero + three</button>
+        <button type="button" data-layout="grid"><i aria-hidden="true"></i>Four grid</button>
+        <button type="button" data-layout="full"><i aria-hidden="true"></i>Full bleed</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Grade</legend>
+      <div class="choices grades" id="grades">
+        <button type="button" data-grade="vice">Vice Sunset</button>
+        <button type="button" data-grade="neon">Neon Night</button>
+        <button type="button" data-grade="gold">Palm Gold</button>
+        <button type="button" data-grade="mono">Mono Noir</button>
+      </div>
+    </fieldset>
+    <fieldset class="caption-fields">
+      <legend>Caption</legend>
+      <label for="caption">Title</label><input id="caption" maxlength="40" value="Sunset Heist">
+      <label for="subtitle">Subtitle</label><input id="subtitle" maxlength="60" value="After hours on the coast">
+    </fieldset>
+    <fieldset>
+      <legend>Photo</legend>
+      <div class="photo-row">
+        <label><span class="sr-only">Active panel</span><select id="panel"></select></label>
+        <button id="choose" type="button">Choose photo</button>
+        <input id="photo" type="file" accept="image/*" hidden>
+      </div>
+      <div class="zoom-row">
+        <label for="zoom">Zoom</label><input id="zoom" type="range" min="1" max="4" step=".01"><output id="zoom-value"></output>
+      </div>
+      <button id="fill" type="button">Fill all panels with this photo</button>
+    </fieldset>
+    <fieldset>
+      <legend>Export</legend>
+      <label class="sr-only" for="size">Export size</label>
+      <select id="size">
+        <option value="1080x1080">1080 × 1080 · Square</option>
+        <option value="1080x1350">1080 × 1350 · Portrait</option>
+        <option value="1920x1080">1920 × 1080 · Wide</option>
+      </select>
+      <div class="export-row">
+        <button id="export" type="button">Export PNG ↓</button>
+        <button id="export-all" type="button">Export all three</button>
+      </div>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </aside>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
